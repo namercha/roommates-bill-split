@@ -33,11 +33,13 @@ class PdfReport:
         # Add the names and due amount of roommates
         pdf.set_font(family="Times", size=12)
         pdf.cell(w=100, h=25, txt=roommate1.name, border=0)
-        pdf.cell(w=150, h=25, txt=roommate_1_pays, border=0, ln=1)
+        pdf.cell(w=150, h=25, txt=f"$ {roommate_1_pays}", border=0, ln=1)
 
         # Add the names and due amount of roommates
         pdf.cell(w=100, h=25, txt=roommate2.name, border=0)
-        pdf.cell(w=150, h=25, txt=roommate_2_pays, border=0, ln=1)
+        pdf.cell(w=150, h=25, txt=f"$ {roommate_2_pays}", border=0, ln=1)
 
+        # Change directory to "files" and open the generated pdf
+        os.chdir("files")
         pdf.output(self.filename)
         webbrowser.open("file://" + os.path.realpath(self.filename))
